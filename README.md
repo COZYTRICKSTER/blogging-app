@@ -1,4 +1,4 @@
-# Flask Blogging Application
+# Blogging Application
 
 This is a simple Flask application that provides a set of APIs for a blogging platform. Users can create posts, comment on posts, reply to comments, and view posts and their associated comments.
 
@@ -14,7 +14,7 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/blogging-app.git
+   git clone https://github.com/COZYTRICKSTER/blogging-app.git
    ```
 
 2. Navigate to the project directory:
@@ -26,7 +26,7 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
 3. Create a virtual environment:
 
    ```bash
-   python -m venv venv
+   python -m venv venv-blog
    ```
 
 4. Activate the virtual environment:
@@ -34,13 +34,13 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
    - On Windows:
 
      ```bash
-     venv\Scripts\activate
+     venv-blog\Scripts\activate
      ```
 
    - On macOS/Linux:
-
+  
      ```bash
-     source venv/bin/activate
+     source venv-blog/bin/activate
      ```
 
 5. Install dependencies:
@@ -54,7 +54,7 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
 1. Run the Flask application:
 
    ```bash
-   flask run
+   python run.py
    ```
 
 2. The API endpoints are accessible at `http://localhost:5000/api`.
@@ -63,8 +63,10 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
 
 - `GET /api/posts`: Retrieve all posts.
 - `POST /api/posts`: Create a new post.
-- `GET /api/posts/<post_id>/comments`: Retrieve comments and their replies for a specific post.
-- `POST /api/posts/<post_id>/comments`: Create a new comment or reply comment on a post.
+- `GET /api/posts/<post_id>/comments`: Retrieve comments for a specific post.
+- `POST /api/posts/<post_id>/comments`: Create a new comment on a post.
+- `POST /api/comments/<comment_id>/reply`: Reply to an existing comment.
+
 
 ## Testing
 
@@ -73,7 +75,3 @@ To run unit tests, execute the following command:
 ```bash
 python -m unittest discover tests
 ```
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
