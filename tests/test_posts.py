@@ -4,6 +4,7 @@ from app.models import Post, db
 
 class PostTestCase(BaseTestCase):
     def test_create_post(self):
+        print("---------> test_create_post")
         response = self.client.post('api/posts', json={
             'title': 'Test Post',
             'content': 'This is a test post.'
@@ -12,6 +13,7 @@ class PostTestCase(BaseTestCase):
         self.assertEqual(response.json['message'], 'Post created successfully')
 
     def test_get_posts(self):
+        print("---------> test_get_posts")
         with self.app.app_context():
             post = Post(title='Test Post', content='This is a test post.')
             db.session.add(post)

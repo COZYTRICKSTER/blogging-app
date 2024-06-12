@@ -4,6 +4,7 @@ from app.models import Post, Comment, db
 
 class CommentTestCase(BaseTestCase):
     def test_create_comment(self):
+        print("---------> test_create_comment")
         with self.app.app_context():
             post = Post(title='Test Post', content='This is a test post.')
             db.session.add(post)
@@ -16,6 +17,7 @@ class CommentTestCase(BaseTestCase):
             self.assertEqual(response.json['message'], 'Comment created successfully')
 
     def test_get_comments(self):
+        print("---------> test_get_comments")
         with self.app.app_context():
             post = Post(title='Test Post', content='This is a test post.')
             db.session.add(post)
@@ -33,26 +35,23 @@ class CommentTestCase(BaseTestCase):
         self.assertEqual(response.json[0]['content'], 'This is a test comment.')
 
     def test_reply_to_comment(self):
+        print("---------> test_reply_to_comment")
         with self.app.app_context():
             with self.app.test_request_context():
-                # Create a sample post
                 post = Post(title='Sample Post', content='This is a sample post.')
                 db.session.add(post)
                 db.session.commit()
 
-                # Create a sample comment
                 comment = Comment(content='This is a sample comment.', post_id=post.id)
                 db.session.add(comment)
                 db.session.commit()
 
-                # Create a reply to the comment
                 response = self.client.post(f'/api/comments/{comment.id}/reply', json={
                     'content': 'This is a reply to the sample comment.'
                 })
                 self.assertEqual(response.status_code, 201)
                 self.assertIn('Reply created', response.get_data(as_text=True))
 
-                # Verify that the reply is correctly added
                 response = self.client.get(f'/api/posts/{post.id}/comments')
                 self.assertEqual(response.status_code, 200)
                 data = response.get_json()

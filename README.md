@@ -57,15 +57,20 @@ This is a simple Flask application that provides a set of APIs for a blogging pl
    python run.py
    ```
 
-2. The API endpoints are accessible at `http://localhost:5000/api`.
+2. The API endpoints are accessible at `http://localhost:5000`.
 
 ## API Endpoints
 
 - `GET /api/posts`: Retrieve all posts.
+![alt text](image-1.png)
 - `POST /api/posts`: Create a new post.
+![alt text](image.png)
 - `GET /api/posts/<post_id>/comments`: Retrieve comments for a specific post.
+![alt text](image-2.png)
 - `POST /api/posts/<post_id>/comments`: Create a new comment on a post.
+![alt text](image-3.png)
 - `POST /api/comments/<comment_id>/reply`: Reply to an existing comment.
+![alt text](image-4.png)
 
 
 ## Testing
